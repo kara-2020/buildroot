@@ -715,13 +715,13 @@ STAGING_DIR_FILES_LISTS = $(sort $(wildcard $(BUILD_DIR)/*/.files-list-staging.t
 host-finalize: $(PACKAGES) $(HOST_DIR) $(HOST_DIR_SYMLINK)
 	@$(call MESSAGE,"Finalizing host directory")
 	$(call per-package-rsync,$(sort $(PACKAGES)),host,$(HOST_DIR),copy)
-	$(Q)PARALLEL_JOBS=$(PARALLEL_JOBS) \
-		PER_PACKAGE_DIR=$(PER_PACKAGE_DIR) \
-		$(TOPDIR)/support/scripts/fix-rpath host
-	$(Q)PARALLEL_JOBS=$(PARALLEL_JOBS) \
-		PER_PACKAGE_DIR=$(PER_PACKAGE_DIR) \
-		$(TOPDIR)/support/scripts/fix-rpath staging
-	$(call ppd-fixup-paths,$(BASE_DIR))
+	#$(Q)PARALLEL_JOBS=$(PARALLEL_JOBS) \
+	#	PER_PACKAGE_DIR=$(PER_PACKAGE_DIR) \
+	#	$(TOPDIR)/support/scripts/fix-rpath host
+	#$(Q)PARALLEL_JOBS=$(PARALLEL_JOBS) \
+	#	PER_PACKAGE_DIR=$(PER_PACKAGE_DIR) \
+	#	$(TOPDIR)/support/scripts/fix-rpath staging
+	#$(call ppd-fixup-paths,$(BASE_DIR))
 
 .PHONY: staging-finalize
 staging-finalize: $(STAGING_DIR_SYMLINK)
